@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="error" class="button">Gerar Erro</button>
+    <button id="sucesso" class="button">Mostrar Mensagem de Sucesso</button>
+
+    <script>
+     
+        document.getElementById('error').addEventListener('click', function() {
+            try {
+                
+                throw new Error('Ocorreu um erro ao processar o evento.')
+            } catch (error) {
+                
+                console.error('Erro capturado:', error.message);
+                alert('Desculpe, ocorreu um erro. Por favor, tente novamente.')
+                
+                document.getElementById('error').style.backgroundColor = 'red'
+                document.getElementById('error').style.color = 'white'
+            }
+        })
+
+        
+        document.getElementById('sucesso').addEventListener('click', function() {
+            try {
+                
+                document.getElementById('sucesso').style.backgroundColor = 'green'
+                document.getElementById('sucesso').style.color = 'white'
+                alert('Ação concluída com sucesso!')
+            } catch (error) {
+               
+                console.error('Erro inesperado:', error.message)
+                alert('Desculpe, ocorreu um erro inesperado.')
+            }
+        })
+    </script>
+</body>
+</html>

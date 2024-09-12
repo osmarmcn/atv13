@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #reloadButton {
+            display: none;
+            background-color: #007bff;
+        }
+        #reloadButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="storeForm">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome">
+            <div id="nomeError" class="error"></div>
+        </div>
+        <div class="form-group">
+            <label for="city">Cidade:</label>
+            <input type="text" id="city" name="city">
+            <div id="cityError" class="error"></div>
+        </div>
+        <div class="form-group">
+            <label for="totalSales">Quantidade:</label>
+            <input type="number" id="totalSales" name="totalSales">
+            <div id="totalSalesError" class="error"></div>
+        </div>
+    </form>
+<button type="button" id="btn">Cadastrar Loja</button>
+<script>
+    document.getElementById('btn').addEventListener('click', function() {
+        try {
+            
+            let nome = document.getElementById('nome').value.trim()
+            let city = document.getElementById('city').value.trim()
+            let totalSales = parseFloat(document.getElementById('totalSales').value.trim())
+
+            
+            if (nome === '' || city === '' || isNaN(totalSales)) {
+                throw new Error('Todos os campos devem ser preenchidos corretamente.')
+            }
+            if (totalSales < 0) {
+                throw new Error('O valor total vendido deve ser maior ou igual a zero.')
+            }
+
+            
+            alert('Cadastro realizado com sucesso!')
+        } catch (error) {
+            
+            alert(error.message)
+        } finally {
+            
+            console.log('Validação concluída.')
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+        <input type="text" placeholder="Digite seu nome" id="nome">
+        <input type="password" placeholder="Digite sua senha" id="senha">
+    </form>
+    <button id="btn">Enviar</button>
+
+    <script>
+        document.getElementById('btn').addEventListener('click', validar);
+
+        function validar() {
+            try {
+                //
+                let nome = document.getElementById('nome').value.trim();
+                let senha = document.getElementById('senha').value.trim();
+
+                
+                if (nome === '' || senha === '') {
+                    throw new Error('Preencha todos os campos.');
+                } else if (senha.length < 3) {
+                    throw new Error('Nome e senha devem ter mais de 3 caracteres.');
+                } else {
+                    alert(`Nome: ${nome}\nSenha: ${senha}`);
+                }
+            } catch (erro) {
+                
+                alert(erro.message);
+            }
+        }
+    </script>
+</body>
+</html>
